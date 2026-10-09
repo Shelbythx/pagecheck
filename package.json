@@ -1,0 +1,60 @@
+{
+  "name": "pagecheck",
+  "version": "0.1.0",
+  "description": "Pre-launch audit for web pages: SEO tags, Open Graph previews, accessibility basics, broken links and heavy images. From the terminal or CI.",
+  "type": "module",
+  "bin": {
+    "pagecheck": "./dist/bin.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node src/bin.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "seo",
+    "audit",
+    "accessibility",
+    "a11y",
+    "open-graph",
+    "broken-links",
+    "lighthouse",
+    "cli",
+    "ci"
+  ],
+  "author": "Svyatoslav Maliuga (https://github.com/Shelbythx)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shelbythx/pagecheck.git"
+  },
+  "bugs": "https://github.com/Shelbythx/pagecheck/issues",
+  "homepage": "https://github.com/Shelbythx/pagecheck#readme",
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}
